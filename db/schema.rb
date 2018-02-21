@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150623180213) do
+ActiveRecord::Schema.define(:version => 20180214164658) do
 
   create_table 'absences', :force => true do |t|
     t.integer 'volunteer_id'
@@ -267,6 +267,10 @@ ActiveRecord::Schema.define(:version => 20150623180213) do
     t.integer  'requested_region_id'
     t.string   'authentication_token'
     t.boolean  'active',                 :default => true,  :null => false
+    t.boolean  'driver_waiver_signed',   :default => false
+    t.datetime 'driver_waiver_signed_at'
+    t.text     'driver_waiver_signed_by_admin_name'
+    t.datetime 'driver_waiver_signed_by_admin_at'
   end
 
   add_index 'volunteers', ['email'], :name => 'index_volunteers_on_email', :unique => true
