@@ -42,7 +42,6 @@
     <%= nav_bar brand: 'The Food Rescue Robot', responsive: true, fluid: true do %>
       <%= menu_group do %>
         <%= menu_item "Home", root_path %>
-
         <% if volunteer_signed_in? %>
 
           <%= drop_down "Take Shifts" do %>

@@ -1,5 +1,4 @@
 Webapp::Application.routes.draw do
-
   resources :assignments, only: [] do
     collection do
       get :knight
@@ -111,9 +110,11 @@ Webapp::Application.routes.draw do
       get :destroy
       get :assign
     end
+
     member do
       get :reactivate
     end
+    resources :availabilities, except: [:show]
   end
 
   resource :waiver, only: [:new, :create]

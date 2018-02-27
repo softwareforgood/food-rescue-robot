@@ -1,0 +1,7 @@
+<h1> How are you doing</h1>
+<%= form_for volunteer_availabilities_path(@volunteer) do |f| =%>
+  <%= f.label_tag 'Monday' =%>
+  <%= f.check_box_tag 'Monday' =%>
+
+  <%= f.submit =%>
+<% end %>
