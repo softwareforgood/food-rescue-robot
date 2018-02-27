@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180213201118) do
+ActiveRecord::Schema.define(:version => 20180214164658) do
 
   create_table "absences", :force => true do |t|
     t.integer "volunteer_id"
@@ -240,43 +240,47 @@ ActiveRecord::Schema.define(:version => 20180213201118) do
     t.boolean  "active",     :default => true, :null => false
   end
 
-  create_table "volunteers", :force => true do |t|
-    t.string   "email"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "preferred_contact"
-    t.boolean  "has_car"
-    t.text     "admin_notes"
-    t.text     "pickup_prefs"
-    t.boolean  "is_disabled"
-    t.boolean  "on_email_list"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.boolean  "admin",                  :default => false
-    t.integer  "transport_type_id"
-    t.integer  "cell_carrier_id"
-    t.boolean  "sms_too",                :default => false
-    t.boolean  "pre_reminders_too",      :default => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.boolean  "get_sncs_email",         :default => false, :null => false
-    t.boolean  "waiver_signed",          :default => false, :null => false
-    t.datetime "waiver_signed_at"
-    t.boolean  "assigned",               :default => false, :null => false
-    t.integer  "requested_region_id"
-    t.string   "authentication_token"
-    t.boolean  "active",                 :default => true,  :null => false
+  create_table 'volunteers', :force => true do |t|
+    t.string   'email'
+    t.string   'name'
+    t.string   'phone'
+    t.string   'preferred_contact'
+    t.boolean  'has_car'
+    t.text     'admin_notes'
+    t.text     'pickup_prefs'
+    t.boolean  'is_disabled'
+    t.boolean  'on_email_list'
+    t.datetime 'created_at',                                :null => false
+    t.datetime 'updated_at',                                :null => false
+    t.string   'encrypted_password',     :default => '',    :null => false
+    t.string   'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer  'sign_in_count',          :default => 0
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.string   'current_sign_in_ip'
+    t.string   'last_sign_in_ip'
+    t.boolean  'admin',                  :default => false
+    t.integer  'transport_type_id'
+    t.integer  'cell_carrier_id'
+    t.boolean  'sms_too',                :default => false
+    t.boolean  'pre_reminders_too',      :default => false
+    t.string   'photo_file_name'
+    t.string   'photo_content_type'
+    t.integer  'photo_file_size'
+    t.datetime 'photo_updated_at'
+    t.boolean  'get_sncs_email',         :default => false, :null => false
+    t.boolean  'waiver_signed',          :default => false, :null => false
+    t.datetime 'waiver_signed_at'
+    t.boolean  'assigned',               :default => false, :null => false
+    t.integer  'requested_region_id'
+    t.string   'authentication_token'
+    t.boolean  'active',                 :default => true,  :null => false
+    t.boolean  'driver_waiver_signed',   :default => false
+    t.datetime 'driver_waiver_signed_at'
+    t.text     'driver_waiver_signed_by_admin_name'
+    t.datetime 'driver_waiver_signed_by_admin_at'
   end
 
   add_index "volunteers", ["email"], :name => "index_volunteers_on_email", :unique => true

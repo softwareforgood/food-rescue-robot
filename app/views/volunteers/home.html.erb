@@ -251,4 +251,36 @@
       </tbody>
     </table>
   </div>
+  <% if current_volunteer.region_admin? %>
+    <div class="col-sm-6">
+      <h2>Driver waivers to be signed</h2>
+      <% if @volunteers_need_signed_waiver.length > 0 %>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Volunteer Name</th>
+            <th>Driver Waiver</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%   @volunteers_need_signed_waiver.each do |vol| %>
+
+            <tr class="bordered">
+              <td>
+                <a href="/volunteers/<%= vol.id %>"><%=vol.name%></a>
+              </td>
+              <td>
+                <a href="/waiver/driver-new/?volunteer_id=<%= vol.id %>">Click here</a>
+              </td>
+            </tr>
+          <%end%>
+          </tbody>
+        </table>
+      <% else %>
+        <p>There are no waivers that need to be signed.</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
