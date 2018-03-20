@@ -81,10 +81,8 @@
         <tr>
           <td>
             Data<br />
-            <span class="subtext">Enter the weight and/or count for each food type.<br /><br />
-            If the pick-up was dropped, put zeroes for the weights, and please explain why using the notes field below.</span>
-          </td>
-          <td>
+            <p><span class="subtext">Enter the weight and/or count for each food type.<br /><br />
+            If the pick-up was dropped, put zeroes for the weights, and please explain why using the notes field below.</span></p>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -99,13 +97,13 @@
                   <%= fields_for :log_parts, lp, :index => "update_#{lp.id}" do |f2| %>
                     <tr class="log_part" style="background: <%= lp.required ? "lightgrey" : "white" %>;">
                       <td>
-                        <%= f2.select(:food_type_id, @food_types,{include_blank: true}, {class: "form-control"}) %>
+                        <%= f2.select(:food_type_id, @food_types,{include_blank: true}, {size: 5, class: "form-control"}) %>
                       </td>
                       <td>
-                        <%= f2.text_field(:weight, size: 5, class: "form-control") %>
+                        <%= f2.text_field(:weight, size: 3, class: "form-control") %>
                       </td>
                       <td>
-                        <%= f2.text_field(:count, size: 5, class: "form-control") %>
+                        <%= f2.text_field(:count, size: 3, class: "form-control") %>
                       </td>
                       <td>
                         <%= f2.text_field(:description, size: 20, class: "form-control") %>
@@ -121,10 +119,10 @@
                       <%= f2.select(:food_type_id, @food_types,{:include_blank => true}, {class: "form-control"}) %>
                     </td>
                     <td>
-                      <%= f2.text_field(:weight, size: 5, class: "form-control") %>
+                      <%= f2.text_field(:weight, size: 3, class: "form-control") %>
                     </td>
                     <td>
-                      <%= f2.text_field(:count, size: 5, class: "form-control") %>
+                      <%= f2.text_field(:count, size: 3, class: "form-control") %>
                     </td>
                     <td>
                       <%= f2.text_field(:description, size: 20, class: "form-control") %>
@@ -141,8 +139,8 @@
               task = "<tr class=\"log_part\">"
               fields_for :log_parts, LogPart.new, :index => "new_42" do |f2|
                 task += "<td>" + f2.select(:food_type_id, @food_types,{:include_blank => true}, {class: 'form-control'})
-                task += "<td>" + f2.text_field(:weight,size: 5, class: 'form-control')
-                task += "<td>" + f2.text_field(:count,size: 5, class: 'form-control')
+                task += "<td>" + f2.text_field(:weight,size: 3, class: 'form-control')
+                task += "<td>" + f2.text_field(:count,size: 3, class: 'form-control')
                 task += "<td>" + f2.text_field(:description,size: 20, class: 'form-control')
               end
               task += "</tr>"
@@ -158,55 +156,51 @@
     </tr>
 
     <% if @scale_types.length != 1 %>
-      <tr>
-        <td>Weighed With</td>
+      <tr id="Weighted row">
         <td>
-          <%= f.select(:scale_type_id, @scale_types, {:include_blank => true}, {class: "form-control"}) %>
+          <p>Weighed With</p>
+          <p><%= f.select(:scale_type_id, @scale_types, {:include_blank => true}, {class: "form-control"}) %></p>
         </td>
     <% end %>
 
-  <tr>
-    <td>Transported With</td>
-    <td><%= f.select(:transport_type_id, @transport_types,{:include_blank => true}, {class: "form-control"}) %></td>
+  <tr id="Transport row">
+      <td>
+        <p>Transported With</p>
+        <p><%= f.select(:transport_type_id, @transport_types,{:include_blank => true}, {class: "form-control"}) %></p>
+      </td>
   </tr>
-  <tr>
+  <tr id="Time spent row">
     <td>
-      Time Spent<br />
+      <p>Time Spent<br /></p>
       <span class="subtext">Approximately how long did you spend doing this shift, in hours? (e.g., 0.5)</span>
-    </td>
-    <td>
-      <%= f.text_field(:hours_spent, :size => "3", class: "form-control") %>
+      <p><%= f.text_field(:hours_spent, :size => "3", class: "form-control") %></p>
     </td>
   </tr>
-  <tr>
+  <tr id="Notes row">
     <td>
-      Notes<br />
-      <span class="subtext">Something to report? Any problems? e.g., trailer<br />in need of repair, issues with the scale, busted bin.</span><td><%= f.text_area(:notes, :size => "30x6") %>
+      <p>Notes<br /></p>
+      <span class="subtext">Something to report? Any problems? e.g., trailer<br />in need of repair, issues with the scale, busted bin.</span>
+      <p><%= f.text_area(:notes, :size => "30x6") %></p>
     </td>
-  </td>
-  <tr>
+  <tr id="flag row">
     <td>
-      Flag For Admin<br />
+      <p>Flag For Admin<br /></p>
       <span class="subtext">Check this if you want to make sure someone reads this.</span>
-    </td>
-    <td>
-      <div class="checkbox">
+      <p><div class="checkbox">
       <label for="log_flag_for_admin">
         <%= f.check_box(:flag_for_admin) %>
         Flag
       </label>
+      </P>
     </td>
   </tr>
-
   <tr id="zero_reason">
     <td>
-      Why Zero?<br />
+      <p>Why Zero?<br /></p>
       <span class="subtext">You're trying to save a log with zero weight. Please tell us what happened.</span>
-    </td>
-    <td>
       <div class="radio">
         <label for="log_why_zero_1">
-          <%= f.radio_button(:why_zero,1) %>
+          <p><%= f.radio_button(:why_zero,1) %></p>
           No Food At Donor
         </label>
       </div>
